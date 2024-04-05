@@ -32,18 +32,18 @@ end)
 
 local FFlagUserExitFreecamBreaksWithShiftlock
 do
-    local success, result = pcall(function()
-        return UserSettings():IsUserFeatureEnabled("UserExitFreecamBreaksWithShiftlock")
-    end)
-    FFlagUserExitFreecamBreaksWithShiftlock = success and result
+	local success, result = pcall(function()
+		return UserSettings():IsUserFeatureEnabled("UserExitFreecamBreaksWithShiftlock")
+	end)
+	FFlagUserExitFreecamBreaksWithShiftlock = success and result
 end
 
 local FFlagUserShowGuiHideToggles
 do
-    local success, result = pcall(function()
-        return UserSettings():IsUserFeatureEnabled("UserShowGuiHideToggles")
-    end)
-    FFlagUserShowGuiHideToggles = success and result
+	local success, result = pcall(function()
+		return UserSettings():IsUserFeatureEnabled("UserShowGuiHideToggles")
+	end)
+	FFlagUserShowGuiHideToggles = success and result
 end
 
 ------------------------------------------------------------------------
@@ -438,9 +438,15 @@ local function StopFreecam()
 end
 
 ------------------------------------------------------------------------
+local enabled = false
+
+local Rah = {}
+
+function Rah:IsEnabled()
+	return enabled
+end
 
 do
-	local enabled = false
 
 	local function ToggleFreecam()
 		if enabled then
@@ -495,3 +501,5 @@ do
 		end)
 	end
 end
+
+return Rah
